@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="top-div">
+      <button class="top-btn">This Week</button>
+      <button class="top-btn">Today</button>
+    </div>
+
+    <div class="toDo-container">
+      <div class="outerBlock">
+        <h3>To do</h3>
+
+        <% if(locals.taskArray){ taskArray.forEach((task,number)=>{ %>
+        <div class="block">
+          <input type="checkbox" class="checkBox" />
+
+          <p><%= task %> : <%= number %></p>
+
+          <form action="/delete" method="post">
+            <button type="submit" name="deleteBtnIndex" value="<%= number %>">
+              Delete
+            </button>
+          </form>
+        </div>
+        <% }) } %>
+
+        <div class="task3 block">
+          <input
+            type="checkbox"
+            name="check"
+            id="check3"
+            onclick="toggleStrikeThrough(this)"
+          />
+          <p class="task-text"></p>
+          <button type="submit" onclick="deleteTask(this)">Delete</button>
+        </div>
+
+        <form action="/submit" method="post">
+          <div class="task-adder block">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-plus-lg plus-svg"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+              />
+            </svg>
+
+            <input type="text" name="taskInput" />
+            <button type="submit" class="add-btn">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

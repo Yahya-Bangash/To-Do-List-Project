@@ -1,0 +1,4 @@
+1- install ejs package 
+2- move ejs files to views folder 
+3- app.use(express.static("absolute")) move static files like css and html to absolute folder
+4- Move repeated ejs files to partial folder.
